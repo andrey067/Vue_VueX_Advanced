@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../vue.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    Teste
+    <div id="app">
+        {{name}}
+        <br>
+        Valor total: {{valor_total}}
+        <br>
+        {{somar(2,4)}}
+    </div>
+</body>
+
+
+<script>
+    const MyNameApp = {
+        el: '#app',
+        data() { //propriedade reativas
+            return {
+                name: "Audrey",
+                valor_total: 150.5,
+                logado: false,
+                hobies: [
+                    'dormir',
+                    'jogar',
+                    'testes'
+                ],
+                perfil: {
+                    nome: 'Audrey',
+                    sobrenome: 'Ernesto de Lima'
+                }
+            }
+        },
+        methods: {
+            somar(a, b) {
+                return a + b;
+            }
+        }
+    }
+    const vm = Vue.createApp(MyNameApp).mount("#app");
+
+    console.log(vm);
+
+</script>
+
+</html>
