@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../../vue.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <h1>Manipulando CSS com VueJS</h1>
+        <p :class="[estilo1,estilo2,estilo3]">
+            Definindo classes com arrays
+        </p>
+        <button @click="estilo1 = ''">Retirar estilo1</button>
+</body>
+
+
+<script>
+    const MyNameApp = {
+        data() {
+            return {
+                estilo1: 'vermelho',
+                estilo2: 'texto-branco',
+                estilo3: 'destaque'
+            }
+        },
+        methods: {
+
+        },
+    }
+    Vue.createApp(MyNameApp).mount("#app");
+
+</script>
+
+</html>
+
+<style>
+    .vermelho {
+        background-color: red
+    }
+
+    .texto-branco {
+        color: white
+    }
+
+    .destaque {
+        font-weight: bold;
+    }
+</style>

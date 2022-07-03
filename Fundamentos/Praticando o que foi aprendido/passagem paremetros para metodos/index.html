@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../vue.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <input type="text" @keyup="imprimirTexto(texto)">
+    </div>
+</body>
+
+
+<script>
+    const MyNameApp = {
+        el: '#app',
+        data() { //propriedade reativas
+            return {
+                texto:'texto no data'
+            }
+        },
+        methods: {
+            imprimirTexto(t) {
+                console.log(t)
+            },
+            messagemAlerta(){
+                alert("Enviado")
+            }
+        }
+    }
+
+    Vue.createApp(MyNameApp).mount("#app");
+
+</script>
+
+</html>

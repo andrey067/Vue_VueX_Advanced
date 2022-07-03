@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../vue.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <!-- v-if simples -->
+        <button @click="exibirSaldo = !exibirSaldo">
+            <span v-if="!exibirSaldo">Exibir Saldo</span>
+            <span v-if="exibirSaldo">Ocultar Saldo</span>
+        </button> <!-- toggle -->
+        <p>Saldo: <span v-if="exibirSaldo">R$ {{ saldo }}</span></p>
+        <hr>
+
+        <!-- v-if e v-else -->
+        Idade: <input type="text" id="inputIdade" @blur="setIdade()">
+        <p v-if="idade < 18">Menor de idade <a><span></span></a></p>
+        <p v-else>Maior de idade</p>
+        <hr>
+
+        <!-- v-if, v-else-if e v-else -->
+        Nota: <input type="text" id="inputNota" @blur="setNota()">
+        <p v-if="nota == ''">Digite a nota do aluno</p>
+        <p v-else-if="nota >= 7 && nota <= 10">Aluno aprovado</p>
+        <p v-else-if="nota >= 5 && nota < 7">Aluno em recuperação</p>
+        <p v-else-if="nota >= 0 && nota < 5">Aluno reprovado</p>
+        <p v-else>A nota informada é inválida</p>
+    </div>
+</body>
+
+
+<script>
+    const MyNameApp = {
+        el: '#app',
+        data() { //propriedade reativas
+            return {
+                saldo: 4570.17,
+                exibirSaldo: false,
+                idade: 0,
+                nota: 0
+            }
+        },
+        methods: {
+            setIdade() {
+                this.idade = inputIdade.value
+            },
+            setNota() {
+                this.nota = inputNota.value
+                console.log(this.nota)
+            }
+        }
+
+
+    }
+    Vue.createApp(MyNameApp).mount("#app");
+</script>
+
+</html>
+
+<style>
+    .verde {
+        background-color: green
+    }
+
+    .branco {
+        background-color: white
+    }
+
+    .azul {
+        background-color: blue
+    }
+
+    .vermelho {
+        background-color: red
+    }
+
+    .borda {
+        border: 1px solid
+    }
+
+    .div-principal {
+        width: 200px;
+        height: 200px
+    }
+
+    .div-comum {
+        width: 50px;
+        height: 50px;
+        display: inline-block;
+    }
+</style>
