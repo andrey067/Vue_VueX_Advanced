@@ -1,6 +1,5 @@
 <template>
-    <div>
-        <p>Conteudo</p>
+    <div>        
         <HomeView/>
         <PublicarVaga/>
     </div>

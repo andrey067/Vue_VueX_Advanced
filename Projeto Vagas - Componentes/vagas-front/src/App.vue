@@ -1,5 +1,4 @@
 <template>
-  <h1>TExto</h1>
   <topo-compoent />
   <conteudo-component />
 </template>
@@ -19,7 +18,5 @@ export default defineComponent({
 </script>
 
 <style scoped lang="scss">
-h1 {
-  color: red
-}
+
 </style>
