@@ -90,7 +90,11 @@ export default defineComponent({
     },
     created() {
         setInterval(this.getUsuarioOnline, 1000)
-    }
+    },
+    mounted() {
+        this.vagas = JSON.parse(localStorage.getItem('vagas')!);
+    },
+    
 });
 </script>
 
