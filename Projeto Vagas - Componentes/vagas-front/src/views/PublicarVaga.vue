@@ -74,12 +74,16 @@ export default defineComponent({
     descricao: '',
     salario: '',
     modalidade: '',
-    tipo: ''
+    tipo: '',
+    publicarVaga: ''
   }),
   methods: {
     salvarVaga() {
-      let vagas = JSON.parse(localStorage.getItem('vagas')!);
+      let tempoDecorrido = Date.now();
+      let dataAtual = new Date(tempoDecorrido);
       
+      let vagas = JSON.parse(localStorage.getItem('vagas')!);
+
       if (!vagas) vagas = [];
 
       vagas.push({
@@ -87,12 +91,13 @@ export default defineComponent({
         descricao: this.descricao,
         salario: this.salario,
         modalidade: this.modalidade,
-        tipo: this.tipo
+        tipo: this.tipo,
+        publicacao: dataAtual.toISOString()
       })
-
+      console.log(vagas);
       localStorage.setItem('vagas', JSON.stringify(vagas))
     },
-  }
+  },
 })
 </script>
 

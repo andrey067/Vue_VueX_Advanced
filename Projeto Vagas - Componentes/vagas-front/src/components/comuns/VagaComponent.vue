@@ -5,7 +5,7 @@
             <p>{{ descricao }}</p>
         </div>
         <div class="card-footer">
-            <small class="text-muted">Salário: R$ {{ salario }} | Modalidade: {{ modalidade }}| Tipo: {{ tipo }} |
+            <small class="text-muted">Salário: R$ {{ salario }} | Modalidade: {{ getModalidade }}| Tipo: {{ getTipo }} |
                 Publicação:
                 {{ publicacao }}</small>
         </div>
@@ -13,7 +13,9 @@
 </template>
 
 <script lang="ts">
-export default {
+import { defineComponent, PropType } from "vue"
+
+export default defineComponent({
     name: "VagaComponent",
     // props: ['titulo', 'descricao', 'salario', 'modalidade', 'tipo', 'publicacao']
     props: {
@@ -41,14 +43,37 @@ export default {
         },
         publicacao: {
             type: String,
-            require: true
+            require: true,            
         },
         tipo: {
             type: String,
             require: true
         },
+    },
+    computed: {
+        getModalidade() {
+            switch (this.modalidade) {
+                case '1': return 'Home Office';
+                case '2': return 'Presencial';
+            }
+            return '';
+        },
+        getTipo() {
+            switch (this.tipo) {
+                case '1': return 'CLT';
+                case '2': return 'PJ';
+            }
+            return ''
+        },
+        getPublicacao() {
+            if (this.publicacao?.valueOf() == undefined) {
+                let datapublicacao = new Date('').toLocaleDateString('pt-br');
+                return datapublicacao;
+            }
+            return new Date(Date.now()).toLocaleDateString('pt-br')
+        }
     }
-}
+})
 </script>
 
 <style>

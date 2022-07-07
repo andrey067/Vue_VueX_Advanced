@@ -1,5 +1,7 @@
 <template>
-  <topo-compoent />
+  <!-- chamada via $emit do compoente filho -->
+  <!-- <topo-compoent @nomeDoEventoQueSeraCapturadoNoComponentePai="acao($event())" /> -->
+  <topo-compoent :funcaoCallback="acao" />
   <conteudo-component />
 </template>
 
@@ -10,6 +12,11 @@ import TopoCompoent from './components/layouts/TopoCompoent.vue';
 
 export default defineComponent({
   name: 'App',
+  methods: {
+    acao(_ : Event): void {
+      console.log("Funcao no componente pai e chamda no componente filho")
+    }
+  },
   components: {
     ConteudoComponent,
     TopoCompoent
@@ -18,5 +25,4 @@ export default defineComponent({
 </script>
 
 <style scoped lang="scss">
-
 </style>
