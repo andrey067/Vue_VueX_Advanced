@@ -66,6 +66,7 @@
 
 <script lang="ts">
 import { defineComponent } from "vue"
+import emitter from "@/services/emitter";
 
 export default defineComponent({
   name: "PublicarVaga",
@@ -81,7 +82,7 @@ export default defineComponent({
     salvarVaga() {
       let tempoDecorrido = Date.now();
       let dataAtual = new Date(tempoDecorrido);
-      
+
       let vagas = JSON.parse(localStorage.getItem('vagas')!);
 
       if (!vagas) vagas = [];
@@ -95,8 +96,42 @@ export default defineComponent({
         publicacao: dataAtual.toISOString()
       })
       console.log(vagas);
-      localStorage.setItem('vagas', JSON.stringify(vagas))
+
+      if (this.validaFormulario()) {
+        localStorage.setItem('vagas', JSON.stringify(vagas));
+        emitter.emit('Alerta', {
+          titulo: `A vaga ${this.titulo} foi cadastrada com sucesso!`,
+          descricao: 'Parabéns, a vaga foi cadastrada e poderá ser consultada por milhares de profissioais em nossa plataforma',
+          tipo: 'sucesso'
+        })
+        this.limparFormulario();
+      } else {
+        emitter.emit('Alerta', {
+          titulo: '-_- Opsss... Não foi possível realizar o cadastro!',
+          descricao: 'Parece que você esqueceu de preencher alguma informação. Faça o ajuste e tente novamente. Obrigado!',
+          tipo: 'erro'
+        })
+      }
     },
+    limparFormulario() {
+      this.titulo = '',
+        this.descricao = '',
+        this.salario = '',
+        this.modalidade = '',
+        this.tipo = '',
+        this.publicarVaga = ''
+    },
+    validaFormulario() {
+      let valido = true
+      if (this.titulo === '') valido = false;
+      if (this.descricao === '') valido = false;
+      if (this.salario === '') valido = false;
+      if (this.modalidade === '') valido = false;
+      if (this.tipo === '') valido = false;
+      if (this.publicarVaga === '') valido = false;
+
+      return valido;
+    }
   },
 })
 </script>

@@ -1,29 +1,57 @@
 <template>
     <div class="card">
-        <div class="card-header bg-dark text-white">{{ titulo }}</div>
+
+        <div class="card-header bg-dark text-white">
+            <div class="row">
+                <div class="col d-flex justify-content-between">
+                    <div>
+                        {{ titulo }}
+                    </div>
+                    <div>
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" v-model="favoritada">
+                            <label class="form-check-label">Favoritar</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="card-body">
             <p>{{ descricao }}</p>
         </div>
         <div class="card-footer">
             <small class="text-muted">Salário: R$ {{ salario }} | Modalidade: {{ getModalidade }}| Tipo: {{ getTipo }} |
                 Publicação:
-                {{ publicacao }}</small>
+                {{ getPublicacao }}</small>
         </div>
     </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType } from "vue"
+import { defineComponent } from "vue"
+import emitter from "@/services/emitter";
 
 export default defineComponent({
     name: "VagaComponent",
+    data: () => ({
+        favoritada: false
+    }),
+    watch: {
+        favoritada(valorNovo, _) {
+            if (valorNovo) {
+                emitter.emit("favoritarVaga", this.titulo);
+            } else {
+                emitter.emit("desfavoritarVaga", this.titulo);
+            }
+        }
+    },
     // props: ['titulo', 'descricao', 'salario', 'modalidade', 'tipo', 'publicacao']
     props: {
         titulo: {
             type: String,
             required: true,
             validator(p: string) {
-                //console.log('Prop: ', p, )
                 if (p.length < 6) return false //se estiver inválido
                 return true //se estiver válido
             }
@@ -43,7 +71,7 @@ export default defineComponent({
         },
         publicacao: {
             type: String,
-            require: true,            
+            require: true,
         },
         tipo: {
             type: String,
@@ -72,7 +100,7 @@ export default defineComponent({
             }
             return new Date(Date.now()).toLocaleDateString('pt-br')
         }
-    }
+    },
 })
 </script>
 

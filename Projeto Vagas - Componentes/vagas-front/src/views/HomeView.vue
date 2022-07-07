@@ -33,13 +33,14 @@
 import { defineComponent } from 'vue';
 import PesquisarVaga from '@/components/comuns/PesquisarVaga.vue';
 import IndicadorComponent from '@/components/comuns/IndicadorComponent.vue';
-import VagaComponent from '../components/comuns/VagaComponent.vue';
+import VagaComponent from '@/components/comuns/VagaComponent.vue';
+import emitter from '../services/emitter';
 
 export default defineComponent({
     name: "HomeView",
     data: () => ({
         usuarioOnline: 0,
-        vagas: []       
+        vagas: []
     }),
     components: { PesquisarVaga, IndicadorComponent, VagaComponent },
     methods: {
@@ -51,9 +52,15 @@ export default defineComponent({
         setInterval(this.getUsuarioOnline, 1000)
     },
     mounted() {
+        emitter.on("filtrarVaga", (termopesquisa) => {
+            const vagas = JSON.parse(localStorage.getItem('vagas')!);
+            // cria um nova array com uma validacao
+            // this.vagas = vagas.filter(req => req.titulo.toLowerCase().includes(termopesquisa.toLowerCase()))
+
+        })
         this.vagas = JSON.parse(localStorage.getItem('vagas')!);
     },
-    
+
 });
 </script>
 
