@@ -97,7 +97,7 @@ export default defineComponent({
       })
       console.log(vagas);
 
-      if (this.validaFormulario()) {
+      // if (this.validaFormulario()) {
         localStorage.setItem('vagas', JSON.stringify(vagas));
         emitter.emit('Alerta', {
           titulo: `A vaga ${this.titulo} foi cadastrada com sucesso!`,
@@ -105,13 +105,13 @@ export default defineComponent({
           tipo: 'sucesso'
         })
         this.limparFormulario();
-      } else {
-        emitter.emit('Alerta', {
-          titulo: '-_- Opsss... Não foi possível realizar o cadastro!',
-          descricao: 'Parece que você esqueceu de preencher alguma informação. Faça o ajuste e tente novamente. Obrigado!',
-          tipo: 'erro'
-        })
-      }
+      // } else {
+      //   emitter.emit('Alerta', {
+      //     titulo: '-_- Opsss... Não foi possível realizar o cadastro!',
+      //     descricao: 'Parece que você esqueceu de preencher alguma informação. Faça o ajuste e tente novamente. Obrigado!',
+      //     tipo: 'erro'
+      //   })
+      // }
     },
     limparFormulario() {
       this.titulo = '',
@@ -121,17 +121,17 @@ export default defineComponent({
         this.tipo = '',
         this.publicarVaga = ''
     },
-    validaFormulario() {
-      let valido = true
-      if (this.titulo === '') valido = false;
-      if (this.descricao === '') valido = false;
-      if (this.salario === '') valido = false;
-      if (this.modalidade === '') valido = false;
-      if (this.tipo === '') valido = false;
-      if (this.publicarVaga === '') valido = false;
+    // validaFormulario() {
+    //   let valido = true
+    //   if (this.titulo === '') valido = false;
+    //   if (this.descricao === '') valido = false;
+    //   if (this.salario === '') valido = false;
+    //   if (this.modalidade === '') valido = false;
+    //   if (this.tipo === '') valido = false;
+    //   if (this.publicarVaga === '') valido = false;
 
-      return valido;
-    }
+    //   return valido;
+    // }
   },
 })
 </script>

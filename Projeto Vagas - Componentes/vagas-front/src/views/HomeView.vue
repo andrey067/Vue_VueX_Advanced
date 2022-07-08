@@ -5,13 +5,22 @@
                 <PesquisarVaga />
             </div>
         </div>
-        <div class="row mt-5" v-for="(vaga, index) in vagas" :key="index">
-            <div class="col">
-                <!-- <VagaComponent :titulo="vaga.titulo" :descricao="vaga.descricao" :salario="vaga.salario"
+        <!-- <VagaComponent :titulo="vaga.titulo" :descricao="vaga.descricao" :salario="vaga.salario"
                     :modalidade="vaga.modalidade" :tipo="vaga.tipo" :publicacao="vaga.publicacao" /> -->
-                <VagaComponent v-bind="vaga" />
+
+        <h2>Template customizado</h2>
+        <ListaVaga v-slot:default="slotProps">
+            <div v-for="(vaga, index) in slotProps.vagas" :key="index">
+                <h4>{{ vaga.titulo }}</h4>
+                <p>{{ vaga.descricao }}</p>
+                <hr>
             </div>
-        </div>
+        </ListaVaga>
+
+        <br><br>
+        <h2>Template padrao</h2>
+        <ListaVaga></ListaVaga>
+
         <div class="row mt-5">
             <div class="col-4">
                 <IndicadorComponent titulo="Vagas Abertas" valor="100" bg="bg-dark" color="text-white" />
@@ -33,16 +42,15 @@
 import { defineComponent } from 'vue';
 import PesquisarVaga from '@/components/comuns/PesquisarVaga.vue';
 import IndicadorComponent from '@/components/comuns/IndicadorComponent.vue';
-import VagaComponent from '@/components/comuns/VagaComponent.vue';
 import emitter from '../services/emitter';
+import ListaVaga from '@/components/comuns/ListaVaga.vue';
 
 export default defineComponent({
     name: "HomeView",
     data: () => ({
-        usuarioOnline: 0,
-        vagas: []
+        usuarioOnline: 0
     }),
-    components: { PesquisarVaga, IndicadorComponent, VagaComponent },
+    components: { PesquisarVaga, IndicadorComponent, ListaVaga },
     methods: {
         getUsuarioOnline() {
             this.usuarioOnline = Math.floor(Math.random() * 100)
@@ -51,16 +59,6 @@ export default defineComponent({
     created() {
         setInterval(this.getUsuarioOnline, 1000)
     },
-    mounted() {
-        emitter.on("filtrarVaga", (termopesquisa) => {
-            const vagas = JSON.parse(localStorage.getItem('vagas')!);
-            // cria um nova array com uma validacao
-            // this.vagas = vagas.filter(req => req.titulo.toLowerCase().includes(termopesquisa.toLowerCase()))
-
-        })
-        this.vagas = JSON.parse(localStorage.getItem('vagas')!);
-    },
-
 });
 </script>
 
