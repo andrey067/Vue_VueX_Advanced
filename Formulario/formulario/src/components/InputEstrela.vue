@@ -1,6 +1,6 @@
 <template>
     <div>
-        <i v-for="estrela in estrelas" :key="estrela.id" :class="estrela.estilo"></i>
+        <!-- <i v-for="estrela in estrelas" :key="estrela.id" :class="estrela.estilo"></i> -->
         
     </div>
 </template>
@@ -26,7 +26,7 @@ export default defineComponent({
     methods: {
         iniciarEstrelas() {
             for (let i = 0; i < this.numeroEstrela; i++) {
-                this.estrelas[i] = { id: i, estilo: 'bi-star estrela' }
+                // this.estrelas[i] = { id: i, estilo: 'bi-star estrela' }
             }
         }
     }
