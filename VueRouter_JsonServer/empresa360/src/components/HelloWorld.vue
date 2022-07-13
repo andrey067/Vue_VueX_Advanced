@@ -1,4 +1,5 @@
 <template>
+  <!-- <router-link to="/">Sair</router-link> -->
   <div>
     <h1>{{ msg }}</h1>
 
