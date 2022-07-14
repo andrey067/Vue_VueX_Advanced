@@ -7,6 +7,7 @@ import VendasComponent from '../components/vendas/VendasComponent.vue';
 import ServicosComponent from '../components/servicos/ServicoComponent.vue';
 import LeadsComponent from '../components/vendas/LeadsComponent.vue'
 import ConstratosComponent from '../components/vendas/ContratosComponent.vue'
+import DashboardComponent from '../components/dashboard/DashboardComponent.vue';
 
 export const routes: RouteRecordRaw[] = [
   {
@@ -34,6 +35,10 @@ export const routes: RouteRecordRaw[] = [
       {
         path: 'servicos',
         component: ServicosComponent
+      },
+      {
+        path: 'dashboard',
+        component: DashboardComponent
       }
     ]
   },
