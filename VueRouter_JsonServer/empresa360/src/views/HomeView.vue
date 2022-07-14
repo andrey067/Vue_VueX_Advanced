@@ -15,19 +15,18 @@
 
     <div class="d-flex">
       <div class="list-group menu-esquerda">
-        <router-link class="list-group-item list-group-item-action" to="/home" exact-active-class="active"><i class="bi bi-speedometer2"></i>
+        <router-link class="list-group-item list-group-item-action" to="/home" exact-active-class="active"><i
+            class="bi bi-speedometer2"></i>
           Dashboard</router-link>
         <router-link class="list-group-item list-group-item-action" to="/home/vendas" exact-active-class="active"><i
             class="bi bi-cart"></i>
           Vendas</router-link>
-        <router-link class="list-group-item list-group-item-action" to="/home/vendas/leads" exact-active-class="active"><i
-            class="bi bi-caret-right"></i>
+        <router-link class="list-group-item list-group-item-action" to="/home/vendas/leads" exact-active-class="active">
+          <i class="bi bi-caret-right"></i>
           Leads</router-link>
-        <router-link class="list-group-item list-group-item-action" to="/home/vendas/contratos" exact-active-class="active"><i
-            class="bi bi-caret-right"></i>
+        <router-link class="list-group-item list-group-item-action" :to="{ name: 'rotaContratos' }" exact-active-class="active"><i class="bi bi-caret-right"></i>
           Contratos</router-link>
-        <router-link class="list-group-item list-group-item-action" to="/home/servicos" exact-active-class="active"><i
-            class="bi bi-card-checklist"></i>
+        <router-link class="list-group-item list-group-item-action" :to="{ name: 'rotaServico' }" exact-active-class="active"><i class="bi bi-card-checklist"></i>
           Servicos</router-link>
       </div>
 
