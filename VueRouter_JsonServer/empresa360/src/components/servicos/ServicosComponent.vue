@@ -28,7 +28,7 @@ import apiclient from "../../services/apiclient";
 const servicos = ref([] as Servico[]);
 
 onMounted(() => {
-  apiclient.getDadosApi<Servico[]>("http://localhost:3000/servicos").then((response: Servico[]) => {
+  apiclient.getDadosApi<Servico[]>("http://localhost:3333/servicos").then((response: Servico[]) => {
     servicos.value = response
   })
 

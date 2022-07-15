@@ -19,14 +19,14 @@ const servico = ref<Servico>();
 
 onMounted(() => {
     // console.log(route)
-    apiclient.getDadosApiPorId<Servico>(`http://localhost:3000/servicos/${route.params.id}`).then((response: Servico) => {
+    apiclient.getDadosApiPorId<Servico>(`http://localhost:3333/servicos/${route.params.id}`).then((response: Servico) => {
         servico.value = response;
     });
 });
 
 watch(() => route.params, (to: RouteParams) => {
     if (to.id !== undefined)
-        apiclient.getDadosApiPorId<Servico>(`http://localhost:3000/servicos/${to.id}`).then((response: Servico) => {
+        apiclient.getDadosApiPorId<Servico>(`http://localhost:3333/servicos/${to.id}`).then((response: Servico) => {
             servico.value = response;
         });
 })

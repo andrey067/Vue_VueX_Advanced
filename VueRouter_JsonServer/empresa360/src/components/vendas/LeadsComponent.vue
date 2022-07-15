@@ -38,7 +38,7 @@ import apiclient from "../../services/apiclient";
 const dados = ref([] as Lead[]);
 
 onMounted(() => {
-  apiclient.getDadosApi<Lead[]>("http://localhost:3000/leads").then((response: Lead[]) => {
+  apiclient.getDadosApi<Lead[]>("http://localhost:3333/leads").then((response: Lead[]) => {
     dados.value = response
   })
 

@@ -45,7 +45,7 @@ const lead = ref<Lead>();
 
 onMounted(() => {
     console.log(route)
-    apiclient.getDadosApiPorId<Lead>(`http://localhost:3000/leads/${route.params.id}`).then((response: Lead) => {
+    apiclient.getDadosApiPorId<Lead>(`http://localhost:3333/leads/${route.params.id}`).then((response: Lead) => {
         lead.value = response;
     })
 })
