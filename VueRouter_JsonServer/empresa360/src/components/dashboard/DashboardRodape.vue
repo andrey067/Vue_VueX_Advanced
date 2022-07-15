@@ -1,10 +1,7 @@
 <template>
   <div>
-    <h1>roda pé do Dashboard Board</h1>
+    <p>Aqui fica o rodapé personalizado do Dashboard</p>
   </div>
-  <br>
-
-  <router-view/>
 </template>
 
 <script setup lang="ts">

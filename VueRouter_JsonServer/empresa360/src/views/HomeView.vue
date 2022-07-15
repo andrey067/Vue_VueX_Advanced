@@ -15,7 +15,7 @@
 
     <div class="d-flex">
       <div class="list-group menu-esquerda">
-        <router-link class="list-group-item list-group-item-action" to="/home" exact-active-class="active"><i
+        <router-link class="list-group-item list-group-item-action" to="/home/dashboard" exact-active-class="active"><i
             class="bi bi-speedometer2"></i>
           Dashboard</router-link>
         <router-link class="list-group-item list-group-item-action" to="/home/vendas" exact-active-class="active"><i
@@ -23,10 +23,13 @@
           Vendas</router-link>
         <router-link class="list-group-item list-group-item-action" to="/home/vendas/leads" exact-active-class="active">
           <i class="bi bi-caret-right"></i>
-          Leads</router-link>
-        <router-link class="list-group-item list-group-item-action" :to="{ name: 'rotaContratos' }" exact-active-class="active"><i class="bi bi-caret-right"></i>
+          Leads
+        </router-link>
+        <router-link class="list-group-item list-group-item-action" :to="{ name: 'rotaContratos' }"
+          exact-active-class="active"><i class="bi bi-caret-right"></i>
           Contratos</router-link>
-        <router-link class="list-group-item list-group-item-action" :to="{ name: 'rotaServico' }" exact-active-class="active"><i class="bi bi-card-checklist"></i>
+        <router-link class="list-group-item list-group-item-action" :to="{ name: 'rotaServico' }"
+          exact-active-class="active"><i class="bi bi-card-checklist"></i>
           Servicos</router-link>
       </div>
 
@@ -42,6 +45,9 @@
         </div>
 
       </div>
+    </div>
+    <div class="rodape">
+      <router-view name="rodape"></router-view>
     </div>
   </div>
 
@@ -83,4 +89,12 @@
   background-color: #f00;
   border-color: #f00;
 } */
+
+.rodape {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #ccc;
+}
 </style>
